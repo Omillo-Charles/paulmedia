@@ -1,41 +1,45 @@
-import { Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600", "700"],
 });
 
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+
+
 export const metadata = {
-  title: "GP Media Productions | Professional Photography & Videography",
-  description: "Professional photography, videography, graphic design, and editing services by Geoffrey Paul. Capturing moments that last forever.",
-  keywords: "photography, videography, graphic design, editing, Kenya, GP Media, Geoffrey Paul, professional photographer",
-  authors: [{ name: "Geoffrey Paul" }],
-  creator: "Geoffrey Paul",
-  publisher: "GP Media Productions",
-  icons: {
-    icon: '/icon.svg',
-    apple: '/icon.svg',
-  },
-  openGraph: {
-    title: "GP Media Productions | Professional Photography & Videography",
-    description: "Professional photography, videography, graphic design, and editing services by Geoffrey Paul.",
-    type: "website",
-    locale: "en_US",
-    siteName: "GP Media Productions",
-  },
+  title: "Paul Media",
+  description: "Professional photography services",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} antialiased`}>
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/weblysleekuisb.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ fontFamily: "'Webly Sleek UI', system-ui, sans-serif" }}
+      >
         <Navbar />
-        <main className="pt-20">{children}</main>
+        <main>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

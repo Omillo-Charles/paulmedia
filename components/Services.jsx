@@ -1,57 +1,71 @@
-export default function Services() {
-  const services = [
-    {
-      number: '01',
-      title: 'Commercial',
-      description: 'Brand storytelling through compelling visual narratives for businesses and products.',
-    },
-    {
-      number: '02',
-      title: 'Editorial',
-      description: 'Fashion and lifestyle photography for magazines, campaigns, and creative projects.',
-    },
-    {
-      number: '03',
-      title: 'Events',
-      description: 'Capturing authentic moments from weddings, corporate events, and celebrations.',
-    },
-    {
-      number: '04',
-      title: 'Portraits',
-      description: 'Personal and professional portraiture that reveals character and personality.',
-    },
-  ];
+"use client";
 
+import { Camera, Users, Heart, Sparkles } from "lucide-react";
+
+const services = [
+  {
+    icon: Heart,
+    title: "Weddings",
+    description: "Capturing the magic of your special day with cinematic storytelling and candid emotion.",
+    color: "bg-rose-50",
+    iconColor: "text-rose-500",
+  },
+  {
+    icon: Users,
+    title: "Portraits",
+    description: "Professional headshots, family sessions, and creative portraits that reveal your true self.",
+    color: "bg-amber-50",
+    iconColor: "text-amber-500",
+  },
+  {
+    icon: Sparkles,
+    title: "Events",
+    description: "From corporate galas to intimate parties, we document every detail and key moment.",
+    color: "bg-blue-50",
+    iconColor: "text-blue-500",
+  },
+  {
+    icon: Camera,
+    title: "Commercial",
+    description: "High-impact imagery for brands, products, and campaigns that drives engagement.",
+    color: "bg-emerald-50",
+    iconColor: "text-emerald-500",
+  },
+];
+
+const Services = () => {
   return (
-    <section className="py-32 bg-gray-50">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="mb-20">
-          <h2 className="text-5xl lg:text-6xl font-light tracking-tight mb-4">
-            Services
-          </h2>
-          <div className="w-16 h-[1px] bg-black/20" />
+    <section className="py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-secondary font-medium tracking-wider uppercase mb-3">Our Expertise</h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+            Services Tailored to You
+          </h3>
+          <p className="text-lg text-neutral-600">
+            We offer a wide range of photography services, each customized to meet your unique needs and vision.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-20">
-          {services.map((service) => (
-            <div key={service.number} className="group">
-              <div className="flex items-start gap-6">
-                <span className="text-sm text-black/30 font-light mt-1">
-                  {service.number}
-                </span>
-                <div className="flex-1">
-                  <h3 className="text-3xl font-light mb-4 group-hover:translate-x-2 transition-transform duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-black/60 leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="group p-8 rounded-3xl bg-white border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+            >
+              <div className={`w-14 h-14 rounded-2xl ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <service.icon className={`w-7 h-7 ${service.iconColor}`} />
               </div>
+              <h4 className="text-xl font-bold text-primary mb-3">{service.title}</h4>
+              <p className="text-neutral-500 leading-relaxed">
+                {service.description}
+              </p>
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Services;
